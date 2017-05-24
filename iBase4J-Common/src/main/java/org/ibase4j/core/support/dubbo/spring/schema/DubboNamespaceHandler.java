@@ -1,8 +1,5 @@
 package org.ibase4j.core.support.dubbo.spring.schema;
 
-import org.ibase4j.core.support.dubbo.spring.AnnotationBean;
-import org.ibase4j.core.support.dubbo.spring.DubboReferenceBean;
-import org.ibase4j.core.support.dubbo.spring.DubboServiceBean;
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
 import com.alibaba.dubbo.common.Version;
@@ -14,6 +11,9 @@ import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.ProviderConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.schema.DubboBeanDefinitionParser;
+import org.ibase4j.core.support.dubbo.spring.AnnotationBean;
+import org.ibase4j.core.support.dubbo.spring.DubboReferenceBean;
+import org.ibase4j.core.support.dubbo.spring.DubboServiceBean;
 
 /**
  * @author ShenHuaJie

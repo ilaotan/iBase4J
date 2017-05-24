@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2008 Happy Fish / YuQing
- *
+ * <p>
  * FastDFS Java Client may be copied only under the terms of the GNU Lesser
  * General Public License (LGPL).
  * Please visit the FastDFS Home Page http://www.csource.org/ for more detail.
@@ -19,9 +19,11 @@ import java.net.Socket;
  * @version Version 1.17
  */
 public class TrackerGroup {
-    protected Integer lock;
     public int tracker_server_index;
+
     public InetSocketAddress[] tracker_servers;
+
+    protected Integer lock;
 
     /**
      * Constructor
@@ -66,7 +68,8 @@ public class TrackerGroup {
 
         try {
             return this.getConnection(current_index);
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("connect to server " + this.tracker_servers[current_index].getAddress().getHostAddress() + ":" + this.tracker_servers[current_index].getPort() + " fail");
             ex.printStackTrace(System.err);
         }
@@ -86,7 +89,8 @@ public class TrackerGroup {
                 }
 
                 return trackerServer;
-            } catch (IOException ex) {
+            }
+            catch (IOException ex) {
                 System.err.println("connect to server " + this.tracker_servers[i].getAddress().getHostAddress() + ":" + this.tracker_servers[i].getPort() + " fail");
                 ex.printStackTrace(System.err);
             }

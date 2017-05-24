@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface SysEventService {
 
-	void saveEvent(HttpServletRequest request, HttpServletResponse response, Exception ex, Long startTime,
-			Long endTime);
+    void saveEvent(HttpServletRequest request, HttpServletResponse response, Exception ex, Long startTime,
+                   Long endTime);
 
 }

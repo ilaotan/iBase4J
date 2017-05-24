@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,22 +28,22 @@ import org.ibase4j.model.sys.SysUser;
 import org.ibase4j.service.sys.SysAuthorizeService;
 import org.ibase4j.service.sys.SysSessionService;
 import org.ibase4j.service.sys.SysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.baomidou.mybatisplus.plugins.Page;
 
 /**
  * 权限检查类
- * 
+ *
  * @author ShenHuaJie
  * @version 2016年5月20日 下午3:44:45
  */
 public class Realm extends AuthorizingRealm {
     private final Logger logger = LogManager.getLogger();
+
     @Autowired
     private SysUserService sysUserService;
+
     @Autowired
     private SysSessionService sysSessionService;
+
     @Autowired
     private SysAuthorizeService sysAuthorizeService;
 
@@ -66,8 +69,8 @@ public class Realm extends AuthorizingRealm {
 
     // 登录验证
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken)
-        throws AuthenticationException {
-        UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
+            throws AuthenticationException {
+        UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("countSql", 0);
         params.put("enable", 1);
@@ -83,18 +86,21 @@ public class Realm extends AuthorizingRealm {
                 WebUtil.saveCurrentUser(user.getId());
                 saveSession(user.getAccount());
                 AuthenticationInfo authcInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(),
-                    user.getUserName());
+                        user.getUserName());
                 return authcInfo;
             }
             logger.warn("USER [{}] PASSWORD IS WRONG: {}", token.getUsername(), sb.toString());
             return null;
-        } else {
+        }
+        else {
             logger.warn("No user: {}", token.getUsername());
             return null;
         }
     }
 
-    /** 保存session */
+    /**
+     * 保存session
+     */
     private void saveSession(String account) {
         // 踢出用户
         sysSessionService.deleteByAccount(account);
@@ -103,7 +109,7 @@ public class Realm extends AuthorizingRealm {
         Subject currentUser = SecurityUtils.getSubject();
         Session session = currentUser.getSession();
         record.setSessionId(session.getId().toString());
-        String host = (String)session.getAttribute("HOST");
+        String host = (String) session.getAttribute("HOST");
         record.setIp(StringUtils.isBlank(host) ? session.getHost() : host);
         record.setStartTime(session.getStartTimestamp());
         sysSessionService.update(record);

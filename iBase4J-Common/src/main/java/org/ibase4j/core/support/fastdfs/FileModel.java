@@ -15,120 +15,128 @@ import javax.activation.MimetypesFileTypeMap;
  */
 @SuppressWarnings("serial")
 public class FileModel implements Serializable {
-	private String namespace;
-	private String objectId;
-	private String key;
+    private String namespace;
 
-	private byte[] content;
-	private String ext;
+    private String objectId;
 
-	private String mime;
-	private String size;
-	private String filename;
+    private String key;
 
-	private String remotePath;
+    private byte[] content;
 
-	public FileModel(String namespace, String objectId, String filePath) {
-		this.namespace = namespace;
-		this.objectId = objectId;
-		if (filePath != null && !"".equals(filePath.trim())) {
-			this.ext = filePath.substring(filePath.lastIndexOf(".") + 1);
-			byte[] file_buff = null;
-			FileInputStream fileInputStream = null;
-			try {
-				File file = new File(filePath);
-				this.size = String.valueOf(file.length());
-				this.filename = file.getName();
+    private String ext;
 
-				fileInputStream = new FileInputStream(file);
-				if (fileInputStream != null) {
-					int len = fileInputStream.available();
-					file_buff = new byte[len];
-					fileInputStream.read(file_buff);
-				}
-				this.content = file_buff;
-				InputStream is = getClass().getResourceAsStream("/META-INF/mime.types");
-				MimetypesFileTypeMap mimetypesFileTypeMap = new MimetypesFileTypeMap(is);
-				this.mime = mimetypesFileTypeMap.getContentType(filename);
-				this.key = UUID.randomUUID().toString();
-			} catch (Exception e) {
-				throw new RuntimeException(e);
-			} finally {
-				if (fileInputStream != null) {
-					try {
-						fileInputStream.close();
-					} catch (IOException e) {
-					}
-				}
-			}
-		}
-	}
+    private String mime;
 
-	public String getNamespace() {
-		return namespace;
-	}
+    private String size;
 
-	public void setNamespace(String namespace) {
-		this.namespace = namespace;
-	}
+    private String filename;
 
-	public String getObjectId() {
-		return objectId;
-	}
+    private String remotePath;
 
-	public void setObjectId(String objectId) {
-		this.objectId = objectId;
-	}
+    public FileModel(String namespace, String objectId, String filePath) {
+        this.namespace = namespace;
+        this.objectId = objectId;
+        if (filePath != null && !"".equals(filePath.trim())) {
+            this.ext = filePath.substring(filePath.lastIndexOf(".") + 1);
+            byte[] file_buff = null;
+            FileInputStream fileInputStream = null;
+            try {
+                File file = new File(filePath);
+                this.size = String.valueOf(file.length());
+                this.filename = file.getName();
 
-	public String getKey() {
-		return key;
-	}
+                fileInputStream = new FileInputStream(file);
+                if (fileInputStream != null) {
+                    int len = fileInputStream.available();
+                    file_buff = new byte[len];
+                    fileInputStream.read(file_buff);
+                }
+                this.content = file_buff;
+                InputStream is = getClass().getResourceAsStream("/META-INF/mime.types");
+                MimetypesFileTypeMap mimetypesFileTypeMap = new MimetypesFileTypeMap(is);
+                this.mime = mimetypesFileTypeMap.getContentType(filename);
+                this.key = UUID.randomUUID().toString();
+            }
+            catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            finally {
+                if (fileInputStream != null) {
+                    try {
+                        fileInputStream.close();
+                    }
+                    catch (IOException e) {
+                    }
+                }
+            }
+        }
+    }
 
-	protected byte[] getContent() {
-		return content;
-	}
+    public String getNamespace() {
+        return namespace;
+    }
 
-	protected void setContent(byte[] content) {
-		this.content = content;
-	}
+    public void setNamespace(String namespace) {
+        this.namespace = namespace;
+    }
 
-	protected String getExt() {
-		return ext;
-	}
+    public String getObjectId() {
+        return objectId;
+    }
 
-	protected void setExt(String ext) {
-		this.ext = ext;
-	}
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
 
-	protected String getMime() {
-		return mime;
-	}
+    public String getKey() {
+        return key;
+    }
 
-	protected void setMime(String mime) {
-		this.mime = mime;
-	}
+    protected byte[] getContent() {
+        return content;
+    }
 
-	protected String getSize() {
-		return size;
-	}
+    protected void setContent(byte[] content) {
+        this.content = content;
+    }
 
-	protected void setSize(String size) {
-		this.size = size;
-	}
+    protected String getExt() {
+        return ext;
+    }
 
-	protected String getFilename() {
-		return filename;
-	}
+    protected void setExt(String ext) {
+        this.ext = ext;
+    }
 
-	protected void setFilename(String filename) {
-		this.filename = filename;
-	}
+    protected String getMime() {
+        return mime;
+    }
 
-	public String getRemotePath() {
-		return remotePath;
-	}
+    protected void setMime(String mime) {
+        this.mime = mime;
+    }
 
-	protected void setRemotePath(String remotePath) {
-		this.remotePath = remotePath;
-	}
+    protected String getSize() {
+        return size;
+    }
+
+    protected void setSize(String size) {
+        this.size = size;
+    }
+
+    protected String getFilename() {
+        return filename;
+    }
+
+    protected void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getRemotePath() {
+        return remotePath;
+    }
+
+    protected void setRemotePath(String remotePath) {
+        this.remotePath = remotePath;
+    }
 }

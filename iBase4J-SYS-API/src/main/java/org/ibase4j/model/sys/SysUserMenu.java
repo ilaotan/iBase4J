@@ -1,14 +1,14 @@
 package org.ibase4j.model.sys;
 
-import org.ibase4j.core.base.BaseModel;
-
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.ibase4j.core.base.BaseModel;
 
 @TableName("sys_user_menu")
 @SuppressWarnings("serial")
 public class SysUserMenu extends BaseModel {
     private String userId;
+
     private String menuId;
 
     @TableField("permission_")
@@ -86,14 +86,14 @@ public class SysUserMenu extends BaseModel {
         }
         SysUserMenu other = (SysUserMenu) that;
         return (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getMenuId() == null ? other.getMenuId() == null : this.getMenuId().equals(other.getMenuId()))
-            && (this.getPermission() == null ? other.getPermission() == null : this.getPermission().equals(other.getPermission()))
-            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateBy() == null ? other.getUpdateBy() == null : this.getUpdateBy().equals(other.getUpdateBy()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
+                && (this.getMenuId() == null ? other.getMenuId() == null : this.getMenuId().equals(other.getMenuId()))
+                && (this.getPermission() == null ? other.getPermission() == null : this.getPermission().equals(other.getPermission()))
+                && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
+                && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+                && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+                && (this.getUpdateBy() == null ? other.getUpdateBy() == null : this.getUpdateBy().equals(other.getUpdateBy()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     /**

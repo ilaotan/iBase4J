@@ -12,11 +12,13 @@ import org.ibase4j.provider.scheduler.CoreTaskProvider;
  */
 @DubboService(interfaceClass = CoreTaskProvider.class)
 public class CoreTaskService implements CoreTaskProvider {
-	private final Logger logger = LogManager.getLogger();
+    private final Logger logger = LogManager.getLogger();
 
-	/** 定时清除国际化信息 */
-	public void flushMessage() {
-		Resources.flushMessage();
-		logger.info("Messages flushed!");
-	}
+    /**
+     * 定时清除国际化信息
+     */
+    public void flushMessage() {
+        Resources.flushMessage();
+        logger.info("Messages flushed!");
+    }
 }

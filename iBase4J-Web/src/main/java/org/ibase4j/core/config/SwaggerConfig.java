@@ -20,17 +20,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-	@Bean
-	public Docket platformApi() {
-		return new Docket(DocumentationType.SWAGGER_2).groupName("full-platform").apiInfo(apiInfo())
-				.forCodeGeneration(true);
-	}
+    @Bean
+    public Docket platformApi() {
+        return new Docket(DocumentationType.SWAGGER_2).groupName("full-platform").apiInfo(apiInfo())
+                .forCodeGeneration(true);
+    }
 
-	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("iBase4J-API").description("©2016 Copyright. Powered By iBase4J.")
-				// .termsOfServiceUrl("")
-				.contact(new Contact("iBase4J", "", "iBase4J@163.com")).license("Apache License Version 2.0")
-				.licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE").version("2.0").build();
-	}
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder().title("iBase4J-API").description("©2016 Copyright. Powered By iBase4J.")
+                // .termsOfServiceUrl("")
+                .contact(new Contact("iBase4J", "", "iBase4J@163.com")).license("Apache License Version 2.0")
+                .licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE").version("2.0").build();
+    }
 
 }

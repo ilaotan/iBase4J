@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2008 Happy Fish / YuQing
- *
+ * <p>
  * FastDHT Java Client may be copied only under the terms of the GNU Lesser
  * General Public License (LGPL).
  * Please visit the FastDHT Home Page http://fastdht.csource.org/ for more detail.
@@ -23,9 +23,10 @@ import org.csource.common.MyException;
  * @author Happy Fish / YuQing
  * @version Version 1.05
  */
-@SuppressWarnings({ "rawtypes", "unchecked" })
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class FastDHTClient {
     protected ServerGroup serverGroup;
+
     protected byte status;
 
     /**
@@ -41,7 +42,8 @@ public class FastDHTClient {
     public FastDHTClient(boolean bMultiThread) {
         if (bMultiThread) {
             this.serverGroup = (ServerGroup) ClientGlobal.g_server_group.clone();
-        } else {
+        }
+        else {
             this.serverGroup = ClientGlobal.g_server_group;
         }
     }
@@ -135,14 +137,16 @@ public class FastDHTClient {
                     ProtoCommon.FDHT_PROTO_CMD_RESP, 0);
             this.status = pkgInfo.header.status;
             return this.status;
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return this.status;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
@@ -184,14 +188,16 @@ public class FastDHTClient {
                     ProtoCommon.FDHT_PROTO_CMD_RESP, 0);
             this.status = pkgInfo.header.status;
             return this.status;
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return this.status;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
@@ -291,14 +297,16 @@ public class FastDHTClient {
             byte[] result = new byte[value_len];
             System.arraycopy(pkgInfo.body, 4, result, 0, value_len);
             return result;
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return null;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
@@ -367,18 +375,20 @@ public class FastDHTClient {
 
             String value = new String(pkgInfo.body, 4, value_len);
             return new Long(value);
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
             this.serverGroup.forceClose(server);
             this.status = 5;
             return null;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
 
-	private int parseBatchUpdate(int src_key_count, ServerInfo server, ProtoCommon.PkgInfo pkgInfo, Map failKeys) throws UnsupportedEncodingException {
+    private int parseBatchUpdate(int src_key_count, ServerInfo server, ProtoCommon.PkgInfo pkgInfo, Map failKeys) throws UnsupportedEncodingException {
         int offset;
         int key_count;
         int success_count;
@@ -522,14 +532,16 @@ public class FastDHTClient {
             ProtoCommon.PkgInfo pkgInfo = ProtoCommon.recvPackage(server.sock.getInputStream(),
                     ProtoCommon.FDHT_PROTO_CMD_RESP, -1);
             return this.parseBatchUpdate(keyValues.size(), server, pkgInfo, failKeys);
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return -1 * this.status;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
@@ -543,7 +555,7 @@ public class FastDHTClient {
      * @return success set key count, < 0 for all keys fail
      */
     @SuppressWarnings("unused")
-	public int batchDelete(ObjectInfo objInfo, String[] keys, Map failKeys) throws MyException {
+    public int batchDelete(ObjectInfo objInfo, String[] keys, Map failKeys) throws MyException {
         ServerInfo server;
         ProtoCommon.PkgHeader header;
         byte[] bsPackage;
@@ -596,14 +608,16 @@ public class FastDHTClient {
             ProtoCommon.PkgInfo pkgInfo = ProtoCommon.recvPackage(server.sock.getInputStream(),
                     ProtoCommon.FDHT_PROTO_CMD_RESP, -1);
             return this.parseBatchUpdate(keys.length, server, pkgInfo, failKeys);
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return -1 * this.status;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
@@ -630,7 +644,7 @@ public class FastDHTClient {
      * @return none null for success, null for all keys fail
      */
     @SuppressWarnings("unused")
-	public Hashtable batchGet(ObjectInfo objInfo, String[] keys, Map failKeys, int expires) throws MyException {
+    public Hashtable batchGet(ObjectInfo objInfo, String[] keys, Map failKeys, int expires) throws MyException {
         ServerInfo server;
         ProtoCommon.PkgHeader header;
         byte[] bsPackage;
@@ -727,20 +741,23 @@ public class FastDHTClient {
                     value = new String(pkgInfo.body, offset, value_len, ClientGlobal.g_charset);
                     keyValues.put(key, value);
                     offset += value_len;
-                } else {
+                }
+                else {
                     failKeys.put(key, new Integer(status));
                 }
             }
 
             return keyValues;
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return null;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
@@ -752,7 +769,7 @@ public class FastDHTClient {
      * @return stat Hashtable for success, null for fail
      */
     @SuppressWarnings("unused")
-	public Hashtable stat(int server_index) throws MyException {
+    public Hashtable stat(int server_index) throws MyException {
         ServerInfo server;
         ProtoCommon.PkgHeader header;
         int offset;
@@ -798,14 +815,16 @@ public class FastDHTClient {
             }
 
             return keyValues;
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return null;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }
@@ -817,7 +836,7 @@ public class FastDHTClient {
      * @return string array for success, null for fail
      */
     @SuppressWarnings("unused")
-	public String[] getSubKeys(ObjectInfo objInfo) throws UnsupportedEncodingException, MyException {
+    public String[] getSubKeys(ObjectInfo objInfo) throws UnsupportedEncodingException, MyException {
         ServerInfo server;
         ProtoCommon.PkgHeader header;
         byte[] bsPackage;
@@ -855,14 +874,16 @@ public class FastDHTClient {
 
             String szSubKeys = new String(pkgInfo.body, ClientGlobal.g_charset);
             return szSubKeys.split(ProtoCommon.FDHT_KEY_LIST_SEP_STR);
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             System.err.println("server " + server.address.getAddress().getHostAddress() + ":" + server.address.getPort()
                     + " IOException, error msg: " + ex.getMessage());
 
             this.serverGroup.forceClose(server);
             this.status = 5;
             return null;
-        } finally {
+        }
+        finally {
             this.serverGroup.closeServer(server);
         }
     }

@@ -3,17 +3,16 @@ package org.ibase4j.provider.sys;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+
+import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.commons.lang3.StringUtils;
 import org.ibase4j.core.base.BaseProviderImpl;
 import org.ibase4j.core.support.dubbo.spring.annotation.DubboService;
 import org.ibase4j.dao.sys.SysRoleMenuMapper;
 import org.ibase4j.model.sys.SysRole;
 import org.ibase4j.model.sys.ext.SysRoleBean;
-import org.ibase4j.provider.sys.ISysRoleProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-
-import com.baomidou.mybatisplus.plugins.Page;
 
 /**
  * @author ShenHuaJie
@@ -41,7 +40,8 @@ public class SysRoleProviderImpl extends BaseProviderImpl<SysRole> implements IS
             for (String permission : permissions) {
                 if (StringUtils.isBlank(bean.getPermission())) {
                     bean.setPermission(permission);
-                } else {
+                }
+                else {
                     bean.setPermission(bean.getPermission() + ";" + permission);
                 }
             }

@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2008 Happy Fish / YuQing
- *
+ * <p>
  * FastDHT Java Client may be copied only under the terms of the GNU Lesser
  * General Public License (LGPL).
  * Please visit the FastDHT Home Page http://fastdht.csource.org/ for more detail.
@@ -21,11 +21,16 @@ import org.csource.common.MyException;
  * @version Version 1.00
  */
 public class ClientGlobal {
+    public static final int DEFAULT_NETWORK_TIMEOUT = 30; //second
+
     public static int g_network_timeout; //millisecond
+
     public static String g_charset;      //String charset
+
     public static ServerGroup g_server_group; //group info
 
-    public static final int DEFAULT_NETWORK_TIMEOUT = 30; //second
+    private ClientGlobal() {
+    }
 
     /**
      * load global variables
@@ -49,8 +54,5 @@ public class ClientGlobal {
         }
 
         g_server_group = ServerGroup.loadFromFile(iniReader);
-    }
-
-    private ClientGlobal() {
     }
 }

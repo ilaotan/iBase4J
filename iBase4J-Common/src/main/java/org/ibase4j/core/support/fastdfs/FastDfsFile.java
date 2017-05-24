@@ -7,31 +7,33 @@ import org.csource.common.NameValuePair;
  * @version 2016年6月27日 上午9:36:30
  */
 public class FastDfsFile {
-	private String groupName;
-	private String fileName;
-	private NameValuePair[] nameValuePairs;
+    private String groupName;
 
-	public String getGroupName() {
-		return groupName;
-	}
+    private String fileName;
 
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
+    private NameValuePair[] nameValuePairs;
 
-	public String getFileName() {
-		return fileName;
-	}
+    public String getGroupName() {
+        return groupName;
+    }
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
 
-	public NameValuePair[] getNameValuePairs() {
-		return nameValuePairs;
-	}
+    public String getFileName() {
+        return fileName;
+    }
 
-	public void setNameValuePairs(NameValuePair[] nameValuePairs) {
-		this.nameValuePairs = nameValuePairs;
-	}
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public NameValuePair[] getNameValuePairs() {
+        return nameValuePairs;
+    }
+
+    public void setNameValuePairs(NameValuePair[] nameValuePairs) {
+        this.nameValuePairs = nameValuePairs;
+    }
 }

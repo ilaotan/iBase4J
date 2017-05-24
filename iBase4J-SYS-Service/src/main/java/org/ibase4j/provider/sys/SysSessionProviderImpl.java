@@ -4,12 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
-import org.ibase4j.core.base.BaseProviderImpl;
-import org.ibase4j.core.support.dubbo.spring.annotation.DubboService;
-import org.ibase4j.dao.sys.SysSessionMapper;
-import org.ibase4j.model.sys.SysSession;
-import org.ibase4j.provider.sys.ISysSessionProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -17,6 +11,11 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import org.apache.commons.lang3.StringUtils;
+import org.ibase4j.core.base.BaseProviderImpl;
+import org.ibase4j.core.support.dubbo.spring.annotation.DubboService;
+import org.ibase4j.dao.sys.SysSessionMapper;
+import org.ibase4j.model.sys.SysSession;
 
 /**
  * @author ShenHuaJie
@@ -38,13 +37,15 @@ public class SysSessionProviderImpl extends BaseProviderImpl<SysSession> impleme
             if (StringUtils.isNotBlank(id)) {
                 record.setId(id);
                 mapper.updateById(record);
-            } else {
+            }
+            else {
                 record.setId(createId("SysSession"));
                 record.setCreateBy(record.getAccount());
                 record.setCreateTime(new Date());
                 mapper.insert(record);
             }
-        } else {
+        }
+        else {
             mapper.updateById(record);
         }
         return record;

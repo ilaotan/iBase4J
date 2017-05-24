@@ -4,22 +4,23 @@ import org.ibase4j.model.sys.SysUser;
 
 @SuppressWarnings("serial")
 public class SysUserBean extends SysUser {
-	private String deptName;
-	private String userTypeText;
+    private String deptName;
 
-	public String getDeptName() {
-		return deptName;
-	}
+    private String userTypeText;
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
+    public String getDeptName() {
+        return deptName;
+    }
 
-	public String getUserTypeText() {
-		return userTypeText;
-	}
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 
-	public void setUserTypeText(String userTypeText) {
-		this.userTypeText = userTypeText;
-	}
+    public String getUserTypeText() {
+        return userTypeText;
+    }
+
+    public void setUserTypeText(String userTypeText) {
+        this.userTypeText = userTypeText;
+    }
 }

@@ -1,8 +1,9 @@
 package org.ibase4j;
 
+import org.springframework.test.context.web.WebAppConfiguration;
+
 import org.ibase4j.core.util.UploadUtil;
 import org.junit.Test;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 @WebAppConfiguration
 public class FasetDFSTest {

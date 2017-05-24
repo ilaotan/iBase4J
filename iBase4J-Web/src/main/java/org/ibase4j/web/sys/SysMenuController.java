@@ -5,12 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.ibase4j.core.base.BaseController;
-import org.ibase4j.core.util.Request2ModelUtil;
-import org.ibase4j.core.util.WebUtil;
-import org.ibase4j.model.sys.SysMenu;
-import org.ibase4j.service.sys.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.plugins.Page;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.ibase4j.core.base.BaseController;
+import org.ibase4j.core.util.Request2ModelUtil;
+import org.ibase4j.core.util.WebUtil;
+import org.ibase4j.model.sys.SysMenu;
+import org.ibase4j.service.sys.SysMenuService;
 
 /**
  * 菜单管理
- * 
+ *
  * @author ShenHuaJie
  * @version 2016年5月20日 下午3:14:54
  */
@@ -80,7 +79,7 @@ public class SysMenuController extends BaseController {
     @RequiresPermissions("sys.menu.delete")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Object delete(HttpServletRequest request, ModelMap modelMap,
-        @RequestParam(value = "id", required = false) String id) {
+                         @RequestParam(value = "id", required = false) String id) {
         sysMenuService.delete(id);
         return setSuccessModelMap(modelMap);
     }

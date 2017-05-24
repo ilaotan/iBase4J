@@ -5,12 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.ibase4j.core.base.BaseController;
-import org.ibase4j.core.util.Request2ModelUtil;
-import org.ibase4j.core.util.WebUtil;
-import org.ibase4j.model.sys.SysRole;
-import org.ibase4j.service.sys.SysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.plugins.Page;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.ibase4j.core.base.BaseController;
+import org.ibase4j.core.util.Request2ModelUtil;
+import org.ibase4j.core.util.WebUtil;
+import org.ibase4j.model.sys.SysRole;
+import org.ibase4j.service.sys.SysRoleService;
 
 /**
  * 角色管理
- * 
+ *
  * @author ShenHuaJie
  * @version 2016年5月20日 下午3:15:43
  */
@@ -79,7 +78,7 @@ public class SysRoleController extends BaseController {
     @RequiresPermissions("sys.role.delete")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public Object delete(HttpServletRequest request, ModelMap modelMap,
-        @RequestParam(value = "id", required = false) String id) {
+                         @RequestParam(value = "id", required = false) String id) {
         sysRoleService.delete(id);
         return setSuccessModelMap(modelMap);
     }
@@ -88,7 +87,7 @@ public class SysRoleController extends BaseController {
     @RequiresPermissions("sys.role.read")
     @RequestMapping(value = "/read/permission", method = RequestMethod.POST)
     public Object getPermission(HttpServletRequest request, ModelMap modelMap,
-        @RequestParam(value = "id", required = false) String id) {
+                                @RequestParam(value = "id", required = false) String id) {
         List<String> permissions = sysRoleService.getPermissions(id);
         return setSuccessModelMap(modelMap, permissions);
     }

@@ -14,25 +14,31 @@ import org.ibase4j.core.exception.LoginException;
  * @version 2016年5月20日 下午3:44:45
  */
 public final class LoginHelper {
-	private LoginHelper() {
-	}
+    private LoginHelper() {
+    }
 
-	/** 用户登录 */
-	public static final Boolean login(String account, String password) {
-		UsernamePasswordToken token = new UsernamePasswordToken(account, password);
-		token.setRememberMe(true);
-		Subject subject = SecurityUtils.getSubject();
-		try {
-			subject.login(token);
-			return subject.isAuthenticated();
-		} catch (LockedAccountException e) {
-			throw new LoginException(Resources.getMessage("ACCOUNT_LOCKED", token.getPrincipal()));
-		} catch (DisabledAccountException e) {
-			throw new LoginException(Resources.getMessage("ACCOUNT_DISABLED", token.getPrincipal()));
-		} catch (ExpiredCredentialsException e) {
-			throw new LoginException(Resources.getMessage("ACCOUNT_EXPIRED", token.getPrincipal()));
-		} catch (Exception e) {
-			throw new LoginException(Resources.getMessage("LOGIN_FAIL"), e);
-		}
-	}
+    /**
+     * 用户登录
+     */
+    public static final Boolean login(String account, String password) {
+        UsernamePasswordToken token = new UsernamePasswordToken(account, password);
+        token.setRememberMe(true);
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            subject.login(token);
+            return subject.isAuthenticated();
+        }
+        catch (LockedAccountException e) {
+            throw new LoginException(Resources.getMessage("ACCOUNT_LOCKED", token.getPrincipal()));
+        }
+        catch (DisabledAccountException e) {
+            throw new LoginException(Resources.getMessage("ACCOUNT_DISABLED", token.getPrincipal()));
+        }
+        catch (ExpiredCredentialsException e) {
+            throw new LoginException(Resources.getMessage("ACCOUNT_EXPIRED", token.getPrincipal()));
+        }
+        catch (Exception e) {
+            throw new LoginException(Resources.getMessage("LOGIN_FAIL"), e);
+        }
+    }
 }

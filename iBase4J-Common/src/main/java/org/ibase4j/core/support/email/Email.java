@@ -4,229 +4,238 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Email implements Serializable {
-	private String host;
-	private String from;
-	private String name;
-	private String password;
-	private String key;
-	private String sendTo;
-	private String copyTo;
-	private String topic;
-	private String body;
-	private String[] fileAffix;
+    private String host;
 
-	public Email() {
-	}
+    private String from;
 
-	/**
-	 * @param sendTo 接收人
-	 * @param topic 主题
-	 * @param body 内容
-	 */
-	public Email(String sendTo, String topic, String body) {
-		this(null, sendTo, null, topic, body, null);
-	}
+    private String name;
 
-	/**
-	 * @param sendTo 接收人
-	 * @param topic 主题
-	 * @param body 内容
-	 * @param fileAffix 附件
-	 */
-	public Email(String sendTo, String topic, String body, String[] fileAffix) {
-		this(sendTo, null, topic, body, fileAffix);
-	}
+    private String password;
 
-	/**
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 */
-	public Email(String sendTo, String copyTo, String topic, String body) {
-		this(null, sendTo, copyTo, topic, body, null);
-	}
+    private String key;
 
-	/**
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 * @param fileAffix 附件
-	 */
-	public Email(String sendTo, String copyTo, String topic, String body, String[] fileAffix) {
-		this(null, sendTo, copyTo, topic, body, fileAffix);
-	}
+    private String sendTo;
 
-	/**
-	 * @param from 发送人
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 */
-	public Email(String from, String sendTo, String copyTo, String topic, String body) {
-		this(from, sendTo, copyTo, topic, body, null);
-	}
+    private String copyTo;
 
-	/**
-	 * @param from 发送人
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 * @param fileAffix 附件
-	 */
-	public Email(String from, String sendTo, String copyTo, String topic, String body, String[] fileAffix) {
-		this(from, null, null, null, sendTo, copyTo, topic, body, fileAffix);
-	}
+    private String topic;
 
-	/**
-	 * @param from 发送人
-	 * @param name 登录名
-	 * @param password 登录密码
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 */
-	public Email(String from, String name, String password, String key, String sendTo, String copyTo, String topic,
-			String body) {
-		this(null, from, name, password, key, sendTo, copyTo, topic, body, null);
-	}
+    private String body;
 
-	/**
-	 * @param from 发送人
-	 * @param name 登录名
-	 * @param password 登录密码
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 * @param fileAffix 附件
-	 */
-	public Email(String from, String name, String password, String key, String sendTo, String copyTo, String topic,
-			String body, String[] fileAffix) {
-		this(null, from, name, password, key, sendTo, copyTo, topic, body, fileAffix);
-	}
+    private String[] fileAffix;
 
-	/**
-	 * @param host 服务器地址
-	 * @param from 发送人
-	 * @param name 登录名
-	 * @param password 登录密码
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 */
-	public Email(String host, String from, String name, String password, String key, String sendTo, String copyTo,
-			String topic, String body) {
-		this(host, from, name, password, key, sendTo, copyTo, topic, body, null);
-	}
+    public Email() {
+    }
 
-	/**
-	 * @param host 服务器地址
-	 * @param from 发送人
-	 * @param name 登录名
-	 * @param password 登录密码
-	 * @param sendTo 接收人
-	 * @param copyTo 抄送人
-	 * @param topic 主题
-	 * @param body 内容
-	 * @param fileAffix 附件
-	 */
-	public Email(String host, String from, String name, String password, String key, String sendTo, String copyTo,
-			String topic, String body, String[] fileAffix) {
-		this.host = host;
-		this.from = from;
-		this.name = name;
-		this.password = password;
-		this.key = key;
-		this.sendTo = sendTo;
-		this.copyTo = copyTo;
-		this.topic = topic;
-		this.body = body;
-		this.fileAffix = fileAffix;
-	}
+    /**
+     * @param sendTo 接收人
+     * @param topic  主题
+     * @param body   内容
+     */
+    public Email(String sendTo, String topic, String body) {
+        this(null, sendTo, null, topic, body, null);
+    }
 
-	public String getHost() {
-		return host;
-	}
+    /**
+     * @param sendTo    接收人
+     * @param topic     主题
+     * @param body      内容
+     * @param fileAffix 附件
+     */
+    public Email(String sendTo, String topic, String body, String[] fileAffix) {
+        this(sendTo, null, topic, body, fileAffix);
+    }
 
-	public void setHost(String host) {
-		this.host = host;
-	}
+    /**
+     * @param sendTo 接收人
+     * @param copyTo 抄送人
+     * @param topic  主题
+     * @param body   内容
+     */
+    public Email(String sendTo, String copyTo, String topic, String body) {
+        this(null, sendTo, copyTo, topic, body, null);
+    }
 
-	public String getFrom() {
-		return from;
-	}
+    /**
+     * @param sendTo    接收人
+     * @param copyTo    抄送人
+     * @param topic     主题
+     * @param body      内容
+     * @param fileAffix 附件
+     */
+    public Email(String sendTo, String copyTo, String topic, String body, String[] fileAffix) {
+        this(null, sendTo, copyTo, topic, body, fileAffix);
+    }
 
-	public void setFrom(String from) {
-		this.from = from;
-	}
+    /**
+     * @param from   发送人
+     * @param sendTo 接收人
+     * @param copyTo 抄送人
+     * @param topic  主题
+     * @param body   内容
+     */
+    public Email(String from, String sendTo, String copyTo, String topic, String body) {
+        this(from, sendTo, copyTo, topic, body, null);
+    }
 
-	public String getName() {
-		return name;
-	}
+    /**
+     * @param from      发送人
+     * @param sendTo    接收人
+     * @param copyTo    抄送人
+     * @param topic     主题
+     * @param body      内容
+     * @param fileAffix 附件
+     */
+    public Email(String from, String sendTo, String copyTo, String topic, String body, String[] fileAffix) {
+        this(from, null, null, null, sendTo, copyTo, topic, body, fileAffix);
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * @param from     发送人
+     * @param name     登录名
+     * @param password 登录密码
+     * @param sendTo   接收人
+     * @param copyTo   抄送人
+     * @param topic    主题
+     * @param body     内容
+     */
+    public Email(String from, String name, String password, String key, String sendTo, String copyTo, String topic,
+                 String body) {
+        this(null, from, name, password, key, sendTo, copyTo, topic, body, null);
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    /**
+     * @param from      发送人
+     * @param name      登录名
+     * @param password  登录密码
+     * @param sendTo    接收人
+     * @param copyTo    抄送人
+     * @param topic     主题
+     * @param body      内容
+     * @param fileAffix 附件
+     */
+    public Email(String from, String name, String password, String key, String sendTo, String copyTo, String topic,
+                 String body, String[] fileAffix) {
+        this(null, from, name, password, key, sendTo, copyTo, topic, body, fileAffix);
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /**
+     * @param host     服务器地址
+     * @param from     发送人
+     * @param name     登录名
+     * @param password 登录密码
+     * @param sendTo   接收人
+     * @param copyTo   抄送人
+     * @param topic    主题
+     * @param body     内容
+     */
+    public Email(String host, String from, String name, String password, String key, String sendTo, String copyTo,
+                 String topic, String body) {
+        this(host, from, name, password, key, sendTo, copyTo, topic, body, null);
+    }
 
-	public String getKey() {
-		return key;
-	}
+    /**
+     * @param host      服务器地址
+     * @param from      发送人
+     * @param name      登录名
+     * @param password  登录密码
+     * @param sendTo    接收人
+     * @param copyTo    抄送人
+     * @param topic     主题
+     * @param body      内容
+     * @param fileAffix 附件
+     */
+    public Email(String host, String from, String name, String password, String key, String sendTo, String copyTo,
+                 String topic, String body, String[] fileAffix) {
+        this.host = host;
+        this.from = from;
+        this.name = name;
+        this.password = password;
+        this.key = key;
+        this.sendTo = sendTo;
+        this.copyTo = copyTo;
+        this.topic = topic;
+        this.body = body;
+        this.fileAffix = fileAffix;
+    }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
+    public String getHost() {
+        return host;
+    }
 
-	public String getSendTo() {
-		return sendTo;
-	}
+    public void setHost(String host) {
+        this.host = host;
+    }
 
-	public void setSendTo(String sendTo) {
-		this.sendTo = sendTo;
-	}
+    public String getFrom() {
+        return from;
+    }
 
-	public String getCopyTo() {
-		return copyTo;
-	}
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
-	public void setCopyTo(String copyTo) {
-		this.copyTo = copyTo;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getTopic() {
-		return topic;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setTopic(String topic) {
-		this.topic = topic;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getBody() {
-		return body;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setBody(String body) {
-		this.body = body;
-	}
+    public String getKey() {
+        return key;
+    }
 
-	public String[] getFileAffix() {
-		return fileAffix;
-	}
+    public void setKey(String key) {
+        this.key = key;
+    }
 
-	public void setFileAffix(String[] fileAffix) {
-		this.fileAffix = fileAffix;
-	}
+    public String getSendTo() {
+        return sendTo;
+    }
+
+    public void setSendTo(String sendTo) {
+        this.sendTo = sendTo;
+    }
+
+    public String getCopyTo() {
+        return copyTo;
+    }
+
+    public void setCopyTo(String copyTo) {
+        this.copyTo = copyTo;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String[] getFileAffix() {
+        return fileAffix;
+    }
+
+    public void setFileAffix(String[] fileAffix) {
+        this.fileAffix = fileAffix;
+    }
 }

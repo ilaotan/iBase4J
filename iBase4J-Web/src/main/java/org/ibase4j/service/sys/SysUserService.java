@@ -2,6 +2,10 @@ package org.ibase4j.service.sys;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.ibase4j.core.base.BaseService;
@@ -12,10 +16,6 @@ import org.ibase4j.core.util.WebUtil;
 import org.ibase4j.model.sys.SysUser;
 import org.ibase4j.model.sys.ext.SysUserBean;
 import org.ibase4j.provider.sys.ISysUserProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.plugins.Page;
 
 /**
  * @author ShenHuaJie
@@ -28,7 +28,9 @@ public class SysUserService extends BaseService<ISysUserProvider, SysUser> {
         this.provider = provider;
     }
 
-    /** 修改用户信息 */
+    /**
+     * 修改用户信息
+     */
     public void updateUserInfo(SysUser sysUser) {
         Assert.isNotBlank(sysUser.getId(), "USER_ID");
         Assert.isNotBlank(sysUser.getAccount(), "ACCOUNT");
@@ -49,7 +51,9 @@ public class SysUserService extends BaseService<ISysUserProvider, SysUser> {
         return provider.queryBeans(params);
     }
 
-    /** 修改密码 */
+    /**
+     * 修改密码
+     */
     public void updatePassword(String id, String password) {
         Assert.isNotBlank(id, "USER_ID");
         Assert.isNotBlank(password, "PASSWORD");
@@ -77,7 +81,8 @@ public class SysUserService extends BaseService<ISysUserProvider, SysUser> {
         String userId = provider.queryUserIdByThirdParty(thirdUser.getOpenid(), thirdUser.getProvider());
         if (userId == null) {
             sysUser = insertThirdPartyUser(thirdUser);
-        } else {
+        }
+        else {
             sysUser = queryById(userId);
         }
         LoginHelper.login(sysUser.getAccount(), sysUser.getPassword());

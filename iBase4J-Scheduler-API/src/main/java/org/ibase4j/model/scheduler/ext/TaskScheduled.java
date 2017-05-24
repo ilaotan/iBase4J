@@ -5,91 +5,114 @@ import java.util.Date;
 
 /**
  * 计划任务信息
- * 
+ *
  * @author ShenHuaJie
  * @version $Id: ScheduleJob.java, v 0.1 2015-1-19 下午7:35:44 ShenHuaJie Exp $
  */
 @SuppressWarnings("serial")
 public class TaskScheduled implements Serializable {
 
-	/** 任务id */
-	private String id;
-	/** 任务名称 */
-	private String taskName;
-	/** 任务分组 */
-	private String taskGroup;
-	/** 任务状态 0禁用 1启用 2删除 */
-	private String status;
-	/** 任务运行时间表达式 */
-	private String taskCron;
-	/** 最后一次执行时间 */
-	private Date previousFireTime;
-	/** 下次执行时间 */
-	private Date nextFireTime;
-	/** 任务描述 */
-	private String desc;
+    /**
+     * 任务id
+     */
+    private String id;
 
-	public String getId() {
-		return id;
-	}
+    /**
+     * 任务名称
+     */
+    private String taskName;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 任务分组
+     */
+    private String taskGroup;
 
-	public String getTaskName() {
-		return taskName;
-	}
+    /**
+     * 任务状态 0禁用 1启用 2删除
+     */
+    private String status;
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
-	}
+    /**
+     * 任务运行时间表达式
+     */
+    private String taskCron;
 
-	public String getTaskGroup() {
-		return taskGroup;
-	}
+    /**
+     * 最后一次执行时间
+     */
+    private Date previousFireTime;
 
-	public void setTaskGroup(String taskGroup) {
-		this.taskGroup = taskGroup;
-	}
+    /**
+     * 下次执行时间
+     */
+    private Date nextFireTime;
 
-	public String getStatus() {
-		return status;
-	}
+    /**
+     * 任务描述
+     */
+    private String desc;
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getTaskCron() {
-		return taskCron;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setTaskCron(String taskCron) {
-		this.taskCron = taskCron;
-	}
+    public String getTaskName() {
+        return taskName;
+    }
 
-	public Date getPreviousFireTime() {
-		return previousFireTime;
-	}
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
-	public void setPreviousFireTime(Date previousFireTime) {
-		this.previousFireTime = previousFireTime;
-	}
+    public String getTaskGroup() {
+        return taskGroup;
+    }
 
-	public Date getNextFireTime() {
-		return nextFireTime;
-	}
+    public void setTaskGroup(String taskGroup) {
+        this.taskGroup = taskGroup;
+    }
 
-	public void setNextFireTime(Date nextFireTime) {
-		this.nextFireTime = nextFireTime;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public String getDesc() {
-		return desc;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+    public String getTaskCron() {
+        return taskCron;
+    }
+
+    public void setTaskCron(String taskCron) {
+        this.taskCron = taskCron;
+    }
+
+    public Date getPreviousFireTime() {
+        return previousFireTime;
+    }
+
+    public void setPreviousFireTime(Date previousFireTime) {
+        this.previousFireTime = previousFireTime;
+    }
+
+    public Date getNextFireTime() {
+        return nextFireTime;
+    }
+
+    public void setNextFireTime(Date nextFireTime) {
+        this.nextFireTime = nextFireTime;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }

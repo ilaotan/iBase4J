@@ -5,6 +5,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.commons.lang3.StringUtils;
 import org.ibase4j.core.base.BaseProviderImpl;
 import org.ibase4j.core.exception.BusinessException;
@@ -14,15 +22,6 @@ import org.ibase4j.dao.sys.SysDicIndexMapper;
 import org.ibase4j.dao.sys.SysDicMapper;
 import org.ibase4j.model.sys.SysDic;
 import org.ibase4j.model.sys.SysDicIndex;
-import org.ibase4j.provider.sys.ISysDicProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.baomidou.mybatisplus.plugins.Page;
 
 /**
  * @author ShenHuaJie
@@ -33,6 +32,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 public class SysDicProviderImpl extends BaseProviderImpl<SysDic> implements ISysDicProvider {
     @Autowired
     private SysDicMapper dicMapper;
+
     @Autowired
     private SysDicIndexMapper dicIndexMapper;
 
@@ -44,7 +44,8 @@ public class SysDicProviderImpl extends BaseProviderImpl<SysDic> implements ISys
             record.setId(createId("SysDicIndex"));
             record.setCreateTime(new Date());
             dicIndexMapper.insert(record);
-        } else {
+        }
+        else {
             dicIndexMapper.updateById(record);
         }
     }
@@ -57,7 +58,8 @@ public class SysDicProviderImpl extends BaseProviderImpl<SysDic> implements ISys
             record.setId(createId("SysDic"));
             record.setCreateTime(new Date());
             dicMapper.insert(record);
-        } else {
+        }
+        else {
             dicMapper.updateById(record);
         }
     }
@@ -81,7 +83,7 @@ public class SysDicProviderImpl extends BaseProviderImpl<SysDic> implements ISys
     @Cacheable(value = "sysDics")
     public Map<String, Map<String, String>> getAllDic() {
         List<String> records = dicIndexMapper.selectIdByMap(Collections.<String, Object>emptyMap());
-        
+
         Map<String, String> dicIndexMap = InstanceUtil.newHashMap();
         for (String id : records) {
             dicIndexMap.put(id, dicIndexMapper.selectById(id).getKeyValue());

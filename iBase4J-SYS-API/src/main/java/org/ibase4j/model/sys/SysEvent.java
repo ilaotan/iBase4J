@@ -1,9 +1,8 @@
 package org.ibase4j.model.sys;
 
-import org.ibase4j.core.base.BaseModel;
-
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.ibase4j.core.base.BaseModel;
 
 @TableName("sys_event")
 @SuppressWarnings("serial")
@@ -20,6 +19,7 @@ public class SysEvent extends BaseModel {
     private String method;
 
     private String clientHost;
+
     private String userAgent;
 
     @TableField("status_")
@@ -155,29 +155,29 @@ public class SysEvent extends BaseModel {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SysEvent other = (SysEvent)that;
+        SysEvent other = (SysEvent) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
-            && (this.getRequestUri() == null ? other.getRequestUri() == null
+                && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
+                && (this.getRequestUri() == null ? other.getRequestUri() == null
                 : this.getRequestUri().equals(other.getRequestUri()))
-            && (this.getParameters() == null ? other.getParameters() == null
+                && (this.getParameters() == null ? other.getParameters() == null
                 : this.getParameters().equals(other.getParameters()))
-            && (this.getMethod() == null ? other.getMethod() == null : this.getMethod().equals(other.getMethod()))
-            && (this.getClientHost() == null ? other.getClientHost() == null
+                && (this.getMethod() == null ? other.getMethod() == null : this.getMethod().equals(other.getMethod()))
+                && (this.getClientHost() == null ? other.getClientHost() == null
                 : this.getClientHost().equals(other.getClientHost()))
-            && (this.getUserAgent() == null ? other.getUserAgent() == null
+                && (this.getUserAgent() == null ? other.getUserAgent() == null
                 : this.getUserAgent().equals(other.getUserAgent()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null
+                && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+                && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
+                && (this.getCreateBy() == null ? other.getCreateBy() == null
                 : this.getCreateBy().equals(other.getCreateBy()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null
+                && (this.getCreateTime() == null ? other.getCreateTime() == null
                 : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateBy() == null ? other.getUpdateBy() == null
+                && (this.getUpdateBy() == null ? other.getUpdateBy() == null
                 : this.getUpdateBy().equals(other.getUpdateBy()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null
                 : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()));
+                && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()));
     }
 
     /**

@@ -9,11 +9,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.ibase4j.core.base.BaseController;
-import org.ibase4j.core.support.HttpCode;
-import org.ibase4j.core.support.decoder.BASE64Decoder;
-import org.ibase4j.core.util.InstanceUtil;
-import org.ibase4j.core.util.UploadUtil;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,10 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.ibase4j.core.base.BaseController;
+import org.ibase4j.core.support.HttpCode;
+import org.ibase4j.core.support.decoder.BASE64Decoder;
+import org.ibase4j.core.util.InstanceUtil;
+import org.ibase4j.core.util.UploadUtil;
 
 /**
  * 文件上传控制器
- * 
+ *
  * @author ShenHuaJie
  * @version 2016年5月20日 下午3:11:42
  */
@@ -43,7 +43,8 @@ public class UploadController extends BaseController {
         if (fileNames.size() > 0) {
             modelMap.put("imgName", fileNames);
             return setSuccessModelMap(modelMap);
-        } else {
+        }
+        else {
             setModelMap(modelMap, HttpCode.BAD_REQUEST);
             modelMap.put("msg", "请选择要上传的文件！");
             return modelMap;
@@ -86,10 +87,12 @@ public class UploadController extends BaseController {
                         out.flush();
                         out.close();
                         fileNames.add(fileName + "." + prefix);
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                         logger.error("上传文件异常：", e);
                     }
-                } else {
+                }
+                else {
                     setModelMap(modelMap, HttpCode.BAD_REQUEST);
                     modelMap.put("msg", "请选择要上传的文件！");
                     return modelMap;
@@ -99,7 +102,8 @@ public class UploadController extends BaseController {
         if (fileNames.size() > 0) {
             modelMap.put("imgName", fileNames);
             return setSuccessModelMap(modelMap);
-        } else {
+        }
+        else {
             setModelMap(modelMap, HttpCode.BAD_REQUEST);
             modelMap.put("msg", "请选择要上传的文件！");
             return modelMap;

@@ -6,22 +6,23 @@ import org.ibase4j.model.sys.SysMenu;
 
 @SuppressWarnings("serial")
 public class SysMenuBean extends SysMenu {
-	private Integer leaf = 1;
-	private List<SysMenuBean> menuBeans;
+    private Integer leaf = 1;
 
-	public Integer getLeaf() {
-		return leaf;
-	}
+    private List<SysMenuBean> menuBeans;
 
-	public void setLeaf(Integer leaf) {
-		this.leaf = leaf;
-	}
+    public Integer getLeaf() {
+        return leaf;
+    }
 
-	public List<SysMenuBean> getMenuBeans() {
-		return menuBeans;
-	}
+    public void setLeaf(Integer leaf) {
+        this.leaf = leaf;
+    }
 
-	public void setMenuBeans(List<SysMenuBean> menuBeans) {
-		this.menuBeans = menuBeans;
-	}
+    public List<SysMenuBean> getMenuBeans() {
+        return menuBeans;
+    }
+
+    public void setMenuBeans(List<SysMenuBean> menuBeans) {
+        this.menuBeans = menuBeans;
+    }
 }

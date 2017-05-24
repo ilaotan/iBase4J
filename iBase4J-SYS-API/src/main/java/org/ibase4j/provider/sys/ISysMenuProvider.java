@@ -8,6 +8,8 @@ import org.ibase4j.model.sys.SysMenu;
 
 public interface ISysMenuProvider extends BaseProvider<SysMenu> {
 
-    /** 获取所有权限选项(value-text) */
+    /**
+     * 获取所有权限选项(value-text)
+     */
     public List<Map<String, String>> getPermissions();
 }

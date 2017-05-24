@@ -4,6 +4,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.commons.lang3.StringUtils;
 import org.ibase4j.core.base.BaseProviderImpl;
 import org.ibase4j.core.util.InstanceUtil;
@@ -14,13 +21,6 @@ import org.ibase4j.model.scheduler.TaskFireLog;
 import org.ibase4j.model.scheduler.TaskGroup;
 import org.ibase4j.model.scheduler.TaskScheduler;
 import org.ibase4j.model.scheduler.ext.TaskSchedulerBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.baomidou.mybatisplus.plugins.Page;
 
 /**
  * @author ShenHuaJie
@@ -30,8 +30,10 @@ import com.baomidou.mybatisplus.plugins.Page;
 public class SchedulerService extends BaseProviderImpl<TaskGroup> {
     @Autowired
     private TaskGroupMapper taskGroupMapper;
+
     @Autowired
     private TaskSchedulerMapper taskSchedulerMapper;
+
     @Autowired
     private TaskFireLogMapper logMapper;
 
@@ -58,7 +60,8 @@ public class SchedulerService extends BaseProviderImpl<TaskGroup> {
             record.setId(createId("TaskGroup"));
             record.setCreateTime(new Date());
             taskGroupMapper.insert(record);
-        } else {
+        }
+        else {
             record.setUpdateTime(new Date());
             taskGroupMapper.updateById(record);
         }
@@ -73,7 +76,8 @@ public class SchedulerService extends BaseProviderImpl<TaskGroup> {
             record.setId(createId("TaskScheduler"));
             record.setCreateTime(new Date());
             taskSchedulerMapper.insert(record);
-        } else {
+        }
+        else {
             record.setUpdateTime(new Date());
             taskSchedulerMapper.updateById(record);
         }
@@ -86,7 +90,8 @@ public class SchedulerService extends BaseProviderImpl<TaskGroup> {
         if (StringUtils.isBlank(record.getId())) {
             record.setId(createId("TaskFireLog"));
             logMapper.insert(record);
-        } else {
+        }
+        else {
             logMapper.updateById(record);
         }
         return record;

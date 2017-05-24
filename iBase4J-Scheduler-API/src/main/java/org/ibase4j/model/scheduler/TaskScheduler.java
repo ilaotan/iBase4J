@@ -2,20 +2,26 @@ package org.ibase4j.model.scheduler;
 
 import java.util.Date;
 
-import org.ibase4j.core.base.BaseModel;
-
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.ibase4j.core.base.BaseModel;
 
 @TableName("task_scheduler")
 @SuppressWarnings("serial")
 public class TaskScheduler extends BaseModel {
     private String groupId;
+
     private String taskName;
+
     private String taskType;
+
     private String taskDesc;
+
     private String taskCron;
+
     private Date taskPreviousFireTime;
+
     private Date taskNextFireTime;
+
     private String contactEmail;
 
     /**
@@ -167,19 +173,19 @@ public class TaskScheduler extends BaseModel {
         }
         TaskScheduler other = (TaskScheduler) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getGroupId() == null ? other.getGroupId() == null : this.getGroupId().equals(other.getGroupId()))
-            && (this.getTaskName() == null ? other.getTaskName() == null : this.getTaskName().equals(other.getTaskName()))
-            && (this.getTaskType() == null ? other.getTaskType() == null : this.getTaskType().equals(other.getTaskType()))
-            && (this.getTaskDesc() == null ? other.getTaskDesc() == null : this.getTaskDesc().equals(other.getTaskDesc()))
-            && (this.getTaskCron() == null ? other.getTaskCron() == null : this.getTaskCron().equals(other.getTaskCron()))
-            && (this.getTaskPreviousFireTime() == null ? other.getTaskPreviousFireTime() == null : this.getTaskPreviousFireTime().equals(other.getTaskPreviousFireTime()))
-            && (this.getTaskNextFireTime() == null ? other.getTaskNextFireTime() == null : this.getTaskNextFireTime().equals(other.getTaskNextFireTime()))
-            && (this.getContactEmail() == null ? other.getContactEmail() == null : this.getContactEmail().equals(other.getContactEmail()))
-            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateBy() == null ? other.getUpdateBy() == null : this.getUpdateBy().equals(other.getUpdateBy()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
+                && (this.getGroupId() == null ? other.getGroupId() == null : this.getGroupId().equals(other.getGroupId()))
+                && (this.getTaskName() == null ? other.getTaskName() == null : this.getTaskName().equals(other.getTaskName()))
+                && (this.getTaskType() == null ? other.getTaskType() == null : this.getTaskType().equals(other.getTaskType()))
+                && (this.getTaskDesc() == null ? other.getTaskDesc() == null : this.getTaskDesc().equals(other.getTaskDesc()))
+                && (this.getTaskCron() == null ? other.getTaskCron() == null : this.getTaskCron().equals(other.getTaskCron()))
+                && (this.getTaskPreviousFireTime() == null ? other.getTaskPreviousFireTime() == null : this.getTaskPreviousFireTime().equals(other.getTaskPreviousFireTime()))
+                && (this.getTaskNextFireTime() == null ? other.getTaskNextFireTime() == null : this.getTaskNextFireTime().equals(other.getTaskNextFireTime()))
+                && (this.getContactEmail() == null ? other.getContactEmail() == null : this.getContactEmail().equals(other.getContactEmail()))
+                && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
+                && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+                && (this.getUpdateBy() == null ? other.getUpdateBy() == null : this.getUpdateBy().equals(other.getUpdateBy()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     /**

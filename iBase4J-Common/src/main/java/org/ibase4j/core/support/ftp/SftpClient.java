@@ -2,26 +2,27 @@ package org.ibase4j.core.support.ftp;
 
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.exception.FtpException;
-import org.ibase4j.core.util.PropertiesUtil;
-
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.ibase4j.core.exception.FtpException;
+import org.ibase4j.core.util.PropertiesUtil;
 
 /**
  * Java Secure Channel
- * 
+ *
  * @author ShenHuaJie
  * @version 2016年5月20日 下午3:19:19
  */
 public class SftpClient {
     private Logger logger = LogManager.getLogger();
+
     private Session session = null;
+
     private ChannelSftp channel = null;
 
     private SftpClient() {
@@ -51,10 +52,11 @@ public class SftpClient {
             session.setTimeout(timeout); // 设置timeout时间
             session.setServerAliveCountMax(aliveMax);
             session.connect(); // 通过Session建立链接
-            channel = (ChannelSftp)session.openChannel("sftp"); // 打开SFTP通道
+            channel = (ChannelSftp) session.openChannel("sftp"); // 打开SFTP通道
             channel.connect(); // 建立SFTP通道的连接
             logger.info("SSH Channel connected.");
-        } catch (JSchException e) {
+        }
+        catch (JSchException e) {
             throw new FtpException("", e);
         }
         return this;
@@ -70,20 +72,26 @@ public class SftpClient {
         }
     }
 
-    /** 发送文件 */
+    /**
+     * 发送文件
+     */
     public void put(String src, String dst) {
         try {
             channel.put(src, dst, new FileProgressMonitor());
-        } catch (SftpException e) {
+        }
+        catch (SftpException e) {
             throw new FtpException("", e);
         }
     }
 
-    /** 获取文件 */
+    /**
+     * 获取文件
+     */
     public void get(String src, String dst) {
         try {
             channel.get(src, dst, new FileProgressMonitor());
-        } catch (SftpException e) {
+        }
+        catch (SftpException e) {
             throw new FtpException("", e);
         }
     }

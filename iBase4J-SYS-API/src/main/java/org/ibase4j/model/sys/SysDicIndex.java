@@ -1,16 +1,17 @@
 package org.ibase4j.model.sys;
 
-import org.ibase4j.core.base.BaseModel;
-
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.ibase4j.core.base.BaseModel;
 
 @TableName("sys_dic_index")
 @SuppressWarnings("serial")
 public class SysDicIndex extends BaseModel {
     private String catalogId;
+
     @TableField("key_")
     private String keyValue;
+
     @TableField("name_")
     private String keyName;
 
@@ -84,21 +85,21 @@ public class SysDicIndex extends BaseModel {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SysDicIndex other = (SysDicIndex)that;
+        SysDicIndex other = (SysDicIndex) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getCatalogId() == null ? other.getCatalogId() == null
+                && (this.getCatalogId() == null ? other.getCatalogId() == null
                 : this.getCatalogId().equals(other.getCatalogId()))
-            && (this.getKeyValue() == null ? other.getKeyValue() == null : this.getKeyValue().equals(other.getKeyValue()))
-            && (this.getKeyName() == null ? other.getKeyName() == null : this.getKeyName().equals(other.getKeyName()))
-            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null
+                && (this.getKeyValue() == null ? other.getKeyValue() == null : this.getKeyValue().equals(other.getKeyValue()))
+                && (this.getKeyName() == null ? other.getKeyName() == null : this.getKeyName().equals(other.getKeyName()))
+                && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
+                && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+                && (this.getCreateBy() == null ? other.getCreateBy() == null
                 : this.getCreateBy().equals(other.getCreateBy()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null
+                && (this.getCreateTime() == null ? other.getCreateTime() == null
                 : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateBy() == null ? other.getUpdateBy() == null
+                && (this.getUpdateBy() == null ? other.getUpdateBy() == null
                 : this.getUpdateBy().equals(other.getUpdateBy()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null
                 : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 

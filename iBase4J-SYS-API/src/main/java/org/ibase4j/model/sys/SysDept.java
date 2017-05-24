@@ -1,16 +1,18 @@
 package org.ibase4j.model.sys;
 
-import org.ibase4j.core.base.BaseModel;
-
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.ibase4j.core.base.BaseModel;
 
 @TableName("sys_dept")
 @SuppressWarnings("serial")
 public class SysDept extends BaseModel {
     private String deptName;
+
     private String parentId;
+
     private Integer sortNo;
+
     @TableField("leaf_")
     private Integer leaf;
 
@@ -99,23 +101,23 @@ public class SysDept extends BaseModel {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SysDept other = (SysDept)that;
+        SysDept other = (SysDept) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getDeptName() == null ? other.getDeptName() == null
+                && (this.getDeptName() == null ? other.getDeptName() == null
                 : this.getDeptName().equals(other.getDeptName()))
-            && (this.getParentId() == null ? other.getParentId() == null
+                && (this.getParentId() == null ? other.getParentId() == null
                 : this.getParentId().equals(other.getParentId()))
-            && (this.getSortNo() == null ? other.getSortNo() == null : this.getSortNo().equals(other.getSortNo()))
-            && (this.getLeaf() == null ? other.getLeaf() == null : this.getLeaf().equals(other.getLeaf()))
-            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null
+                && (this.getSortNo() == null ? other.getSortNo() == null : this.getSortNo().equals(other.getSortNo()))
+                && (this.getLeaf() == null ? other.getLeaf() == null : this.getLeaf().equals(other.getLeaf()))
+                && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
+                && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+                && (this.getCreateBy() == null ? other.getCreateBy() == null
                 : this.getCreateBy().equals(other.getCreateBy()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null
+                && (this.getCreateTime() == null ? other.getCreateTime() == null
                 : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateBy() == null ? other.getUpdateBy() == null
+                && (this.getUpdateBy() == null ? other.getUpdateBy() == null
                 : this.getUpdateBy().equals(other.getUpdateBy()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null
                 : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 

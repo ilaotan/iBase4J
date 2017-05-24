@@ -5,13 +5,15 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.Properties;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Parsing The Configuration File
+ *
  * @author ShenHuaJie
  * @version 2016年7月30日 下午11:41:53
  */
@@ -19,35 +21,24 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
 
     private static Map<String, String> ctxPropertiesMap;
 
-    @Override
-    protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties props)
-        throws BeansException {
-        super.processProperties(beanFactoryToProcess, props);
-        ctxPropertiesMap = new HashMap<String, String>();
-        for (Object key : props.keySet()) {
-            String keyStr = key.toString();
-            String value = props.getProperty(keyStr);
-            ctxPropertiesMap.put(keyStr, value);
-        }
-    }
-
     /**
      * Get a value based on key , if key does not exist , null is returned
-     * 
+     *
      * @param key
      * @return
      */
     public static String getString(String key) {
         try {
             return ctxPropertiesMap.get(key);
-        } catch (MissingResourceException e) {
+        }
+        catch (MissingResourceException e) {
             return null;
         }
     }
 
     /**
      * 根据key获取值
-     * 
+     *
      * @param key
      * @return
      */
@@ -57,7 +48,7 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
 
     /**
      * 根据key获取值
-     * 
+     *
      * @param key
      * @param defaultValue
      * @return
@@ -72,6 +63,7 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
 
     /**
      * 根据key获取值
+     *
      * @param key
      * @param defaultValue
      * @return
@@ -82,5 +74,17 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer {
             return defaultValue;
         }
         return new Boolean(value);
+    }
+
+    @Override
+    protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties props)
+            throws BeansException {
+        super.processProperties(beanFactoryToProcess, props);
+        ctxPropertiesMap = new HashMap<String, String>();
+        for (Object key : props.keySet()) {
+            String keyStr = key.toString();
+            String value = props.getProperty(keyStr);
+            ctxPropertiesMap.put(keyStr, value);
+        }
     }
 }

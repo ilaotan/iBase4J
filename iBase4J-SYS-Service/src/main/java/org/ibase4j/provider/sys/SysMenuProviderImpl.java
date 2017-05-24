@@ -3,16 +3,14 @@ package org.ibase4j.provider.sys;
 import java.util.List;
 import java.util.Map;
 
-import org.ibase4j.core.base.BaseProviderImpl;
-import org.ibase4j.core.support.dubbo.spring.annotation.DubboService;
-import org.ibase4j.dao.sys.SysMenuMapper;
-import org.ibase4j.model.sys.SysMenu;
-import org.ibase4j.provider.sys.ISysDicProvider;
-import org.ibase4j.provider.sys.ISysMenuProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import org.ibase4j.core.base.BaseProviderImpl;
+import org.ibase4j.core.support.dubbo.spring.annotation.DubboService;
+import org.ibase4j.dao.sys.SysMenuMapper;
+import org.ibase4j.model.sys.SysMenu;
 
 /**
  * @author ShenHuaJie
@@ -23,6 +21,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 public class SysMenuProviderImpl extends BaseProviderImpl<SysMenu> implements ISysMenuProvider {
     @Autowired
     private SysMenuMapper sysMenuMapper;
+
     @Autowired
     private ISysDicProvider sysDicProvider;
 

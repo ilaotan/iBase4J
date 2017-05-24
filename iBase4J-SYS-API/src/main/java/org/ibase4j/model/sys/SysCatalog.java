@@ -1,23 +1,31 @@
 package org.ibase4j.model.sys;
 
-import org.ibase4j.core.base.BaseModel;
-
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import org.ibase4j.core.base.BaseModel;
 
 @TableName("sys_catalog")
 @SuppressWarnings("serial")
 public class SysCatalog extends BaseModel {
     private String cascadeId;
+
     private String rootKey;
+
     private String rootName;
+
     @TableField("name_")
     private String name;
+
     private String hotkey;
+
     private String parentId;
+
     private String isLeaf;
+
     private String isAutoExpand;
+
     private String iconName;
+
     private Integer sortNo;
 
     /**
@@ -49,7 +57,6 @@ public class SysCatalog extends BaseModel {
     }
 
     /**
-     *
      * @return the value of sys_catalog.root_name
      */
     public String getRootName() {
@@ -196,32 +203,32 @@ public class SysCatalog extends BaseModel {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SysCatalog other = (SysCatalog)that;
+        SysCatalog other = (SysCatalog) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getCascadeId() == null ? other.getCascadeId() == null
+                && (this.getCascadeId() == null ? other.getCascadeId() == null
                 : this.getCascadeId().equals(other.getCascadeId()))
-            && (this.getRootKey() == null ? other.getRootKey() == null : this.getRootKey().equals(other.getRootKey()))
-            && (this.getRootName() == null ? other.getRootName() == null
+                && (this.getRootKey() == null ? other.getRootKey() == null : this.getRootKey().equals(other.getRootKey()))
+                && (this.getRootName() == null ? other.getRootName() == null
                 : this.getRootName().equals(other.getRootName()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getHotkey() == null ? other.getHotkey() == null : this.getHotkey().equals(other.getHotkey()))
-            && (this.getParentId() == null ? other.getParentId() == null
+                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+                && (this.getHotkey() == null ? other.getHotkey() == null : this.getHotkey().equals(other.getHotkey()))
+                && (this.getParentId() == null ? other.getParentId() == null
                 : this.getParentId().equals(other.getParentId()))
-            && (this.getIsLeaf() == null ? other.getIsLeaf() == null : this.getIsLeaf().equals(other.getIsLeaf()))
-            && (this.getIsAutoExpand() == null ? other.getIsAutoExpand() == null
+                && (this.getIsLeaf() == null ? other.getIsLeaf() == null : this.getIsLeaf().equals(other.getIsLeaf()))
+                && (this.getIsAutoExpand() == null ? other.getIsAutoExpand() == null
                 : this.getIsAutoExpand().equals(other.getIsAutoExpand()))
-            && (this.getIconName() == null ? other.getIconName() == null
+                && (this.getIconName() == null ? other.getIconName() == null
                 : this.getIconName().equals(other.getIconName()))
-            && (this.getSortNo() == null ? other.getSortNo() == null : this.getSortNo().equals(other.getSortNo()))
-            && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getCreateBy() == null ? other.getCreateBy() == null
+                && (this.getSortNo() == null ? other.getSortNo() == null : this.getSortNo().equals(other.getSortNo()))
+                && (this.getEnable() == null ? other.getEnable() == null : this.getEnable().equals(other.getEnable()))
+                && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
+                && (this.getCreateBy() == null ? other.getCreateBy() == null
                 : this.getCreateBy().equals(other.getCreateBy()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null
+                && (this.getCreateTime() == null ? other.getCreateTime() == null
                 : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateBy() == null ? other.getUpdateBy() == null
+                && (this.getUpdateBy() == null ? other.getUpdateBy() == null
                 : this.getUpdateBy().equals(other.getUpdateBy()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null
                 : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 

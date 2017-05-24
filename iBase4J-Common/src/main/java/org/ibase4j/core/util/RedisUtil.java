@@ -13,16 +13,17 @@ import org.springframework.web.context.WebApplicationContext;
 
 /**
  * Redis缓存辅助类
- * 
+ *
  * @author ShenHuaJie
  * @version 2016年4月2日 下午4:17:22
  */
 public final class RedisUtil {
+    private static RedisTemplate<Serializable, Serializable> redisTemplate = null;
+
+    private static Integer EXPIRE = PropertiesUtil.getInt("redis.expiration");
+
     private RedisUtil() {
     }
-
-    private static RedisTemplate<Serializable, Serializable> redisTemplate = null;
-    private static Integer EXPIRE = PropertiesUtil.getInt("redis.expiration");
 
     // 获取连接
     @SuppressWarnings("unchecked")
@@ -31,7 +32,7 @@ public final class RedisUtil {
             synchronized (RedisUtil.class) {
                 if (redisTemplate == null) {
                     WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-                    redisTemplate = (RedisTemplate<Serializable, Serializable>)wac.getBean("redisTemplate");
+                    redisTemplate = (RedisTemplate<Serializable, Serializable>) wac.getBean("redisTemplate");
                 }
             }
         }
@@ -68,7 +69,7 @@ public final class RedisUtil {
 
     /**
      * 在某段时间后失效
-     * 
+     *
      * @return
      */
     public static final Boolean expire(final String key, final int seconds) {
@@ -77,7 +78,7 @@ public final class RedisUtil {
 
     /**
      * 在某个时间点失效
-     * 
+     *
      * @param key
      * @param unixTime
      * @return
@@ -105,7 +106,9 @@ public final class RedisUtil {
         return getRedis().boundValueOps(key).getAndSet(value);
     }
 
-    /** 递增 */
+    /**
+     * 递增
+     */
     public static Long incr(final String redisKey) {
         return getRedis().execute(new RedisCallback<Long>() {
             public Long doInRedis(RedisConnection connection) throws DataAccessException {

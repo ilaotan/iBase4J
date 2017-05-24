@@ -12,14 +12,22 @@ import com.baomidou.mybatisplus.annotations.TableName;
 public class TaskFireLog implements Serializable {
     @TableId("id_")
     private String id;
+
     private String groupName;
+
     private String taskName;
+
     private Date startTime;
+
     private Date endTime;
+
     @TableField("status_")
     private String status;
+
     private String serverHost;
+
     private String serverDuid;
+
     private String fireInfo;
 
     /**
@@ -181,21 +189,21 @@ public class TaskFireLog implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        TaskFireLog other = (TaskFireLog)that;
+        TaskFireLog other = (TaskFireLog) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getGroupName() == null ? other.getGroupName() == null
+                && (this.getGroupName() == null ? other.getGroupName() == null
                 : this.getGroupName().equals(other.getGroupName()))
-            && (this.getTaskName() == null ? other.getTaskName() == null
+                && (this.getTaskName() == null ? other.getTaskName() == null
                 : this.getTaskName().equals(other.getTaskName()))
-            && (this.getStartTime() == null ? other.getStartTime() == null
+                && (this.getStartTime() == null ? other.getStartTime() == null
                 : this.getStartTime().equals(other.getStartTime()))
-            && (this.getEndTime() == null ? other.getEndTime() == null : this.getEndTime().equals(other.getEndTime()))
-            && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
-            && (this.getServerHost() == null ? other.getServerHost() == null
+                && (this.getEndTime() == null ? other.getEndTime() == null : this.getEndTime().equals(other.getEndTime()))
+                && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
+                && (this.getServerHost() == null ? other.getServerHost() == null
                 : this.getServerHost().equals(other.getServerHost()))
-            && (this.getServerDuid() == null ? other.getServerDuid() == null
+                && (this.getServerDuid() == null ? other.getServerDuid() == null
                 : this.getServerDuid().equals(other.getServerDuid()))
-            && (this.getFireInfo() == null ? other.getFireInfo() == null
+                && (this.getFireInfo() == null ? other.getFireInfo() == null
                 : this.getFireInfo().equals(other.getFireInfo()));
     }
 

@@ -1,34 +1,39 @@
 /**
- * 
+ *
  */
 package org.ibase4j.provider.scheduler;
 
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import org.ibase4j.model.scheduler.TaskFireLog;
 import org.ibase4j.model.scheduler.TaskGroup;
 import org.ibase4j.model.scheduler.TaskScheduler;
 import org.ibase4j.model.scheduler.ext.TaskScheduled;
 import org.ibase4j.model.scheduler.ext.TaskSchedulerBean;
 
-import com.baomidou.mybatisplus.plugins.Page;
-
 /**
  * 定时任务管理
- * 
+ *
  * @author ShenHuaJie
  * @version 2016年5月15日 上午11:06:49
  */
 public interface SchedulerProvider {
 
-    /** 获取所有任务 */
+    /**
+     * 获取所有任务
+     */
     public List<TaskScheduled> getAllTaskDetail();
 
-    /** 执行任务 */
+    /**
+     * 执行任务
+     */
     public boolean execTask(String taskGroup, String taskName);
 
-    /** 启停 */
+    /**
+     * 启停
+     */
     public boolean openCloseTask(String taskGroup, String taskName, String status);
 
     public TaskGroup getGroupById(String id);

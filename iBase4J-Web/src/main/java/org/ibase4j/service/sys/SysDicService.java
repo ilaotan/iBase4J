@@ -2,6 +2,9 @@ package org.ibase4j.service.sys;
 
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
+import com.baomidou.mybatisplus.plugins.Page;
 import org.ibase4j.core.config.Resources;
 import org.ibase4j.core.support.Assert;
 import org.ibase4j.core.support.dubbo.spring.annotation.DubboReference;
@@ -9,9 +12,6 @@ import org.ibase4j.core.util.WebUtil;
 import org.ibase4j.model.sys.SysDic;
 import org.ibase4j.model.sys.SysDicIndex;
 import org.ibase4j.provider.sys.ISysDicProvider;
-import org.springframework.stereotype.Service;
-
-import com.baomidou.mybatisplus.plugins.Page;
 
 @Service
 public class SysDicService {

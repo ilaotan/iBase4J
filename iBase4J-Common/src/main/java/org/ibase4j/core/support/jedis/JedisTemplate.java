@@ -1,11 +1,11 @@
 package org.ibase4j.core.support.jedis;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.ibase4j.core.util.PropertiesUtil;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.ibase4j.core.util.PropertiesUtil;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
@@ -43,14 +43,17 @@ public class JedisTemplate {
             if (jedis.exists(key)) {
                 if (expire == null || expire.length == 0) {
                     jedis.expire(key, EXPIRE);
-                } else if (expire.length == 1) {
+                }
+                else if (expire.length == 1) {
                     jedis.expire(key, expire[0]);
                 }
             }
             return result;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             logger.error(e.getMessage(), e);
-        } finally {
+        }
+        finally {
             if (jedis != null) {
                 jedis.close();
             }
@@ -68,14 +71,17 @@ public class JedisTemplate {
             if (jedis.exists(key)) {
                 if (expire == null || expire.length == 0) {
                     jedis.expire(key, EXPIRE);
-                } else if (expire.length == 1) {
+                }
+                else if (expire.length == 1) {
                     jedis.expire(key, expire[0]);
                 }
             }
             return result;
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             logger.error(e.getMessage(), e);
-        } finally {
+        }
+        finally {
             if (jedis != null) {
                 jedis.close();
             }

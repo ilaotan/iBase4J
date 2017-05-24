@@ -12,12 +12,14 @@ import com.alibaba.dubbo.config.spring.ReferenceBean;
  * @version 2016年5月27日 下午4:23:06
  */
 public class ReferenceUtil {
+    private static final ConcurrentMap<String, ReferenceBean<?>> referenceConfigs = new ConcurrentHashMap<String, ReferenceBean<?>>();
+
     private ReferenceUtil() {
     }
 
-    private static final ConcurrentMap<String, ReferenceBean<?>> referenceConfigs = new ConcurrentHashMap<String, ReferenceBean<?>>();
-
-    /** 获取Dubbo服务 */
+    /**
+     * 获取Dubbo服务
+     */
     public static Object refer(ApplicationContext applicationContext, String interfaceName) {
         String key = "/" + interfaceName + ":";
         ReferenceBean<?> referenceConfig = referenceConfigs.get(key);
@@ -28,9 +30,11 @@ public class ReferenceUtil {
                 referenceConfig.setApplicationContext(applicationContext);
                 try {
                     referenceConfig.afterPropertiesSet();
-                } catch (RuntimeException e) {
-                    throw (RuntimeException)e;
-                } catch (Exception e) {
+                }
+                catch (RuntimeException e) {
+                    throw (RuntimeException) e;
+                }
+                catch (Exception e) {
                     throw new IllegalStateException(e.getMessage(), e);
                 }
             }

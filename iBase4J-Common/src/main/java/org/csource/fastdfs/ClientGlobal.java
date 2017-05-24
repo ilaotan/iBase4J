@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2008 Happy Fish / YuQing
- *
+ * <p>
  * FastDFS Java Client may be copied only under the terms of the GNU Lesser
  * General Public License (LGPL).
  * Please visit the FastDFS Home Page http://www.csource.org/ for more detail.
@@ -23,16 +23,23 @@ import org.csource.common.MyException;
  * @version Version 1.11
  */
 public class ClientGlobal {
-    public static int g_connect_timeout; //millisecond
-    public static int g_network_timeout; //millisecond
-    public static String g_charset;
-    public static int g_tracker_http_port;
-    public static boolean g_anti_steal_token;  //if anti-steal token
-    public static String g_secret_key;   //generage token secret key
-    public static TrackerGroup g_tracker_group;
-
     public static final int DEFAULT_CONNECT_TIMEOUT = 5;  //second
+
     public static final int DEFAULT_NETWORK_TIMEOUT = 30; //second
+
+    public static int g_connect_timeout; //millisecond
+
+    public static int g_network_timeout; //millisecond
+
+    public static String g_charset;
+
+    public static int g_tracker_http_port;
+
+    public static boolean g_anti_steal_token;  //if anti-steal token
+
+    public static String g_secret_key;   //generage token secret key
+
+    public static TrackerGroup g_tracker_group;
 
     private ClientGlobal() {
     }

@@ -7,6 +7,9 @@ import java.util.concurrent.Executors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Service;
+
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
 import org.ibase4j.core.base.BaseService;
 import org.ibase4j.core.support.SysEventService;
@@ -17,21 +20,18 @@ import org.ibase4j.core.util.InstanceUtil;
 import org.ibase4j.core.util.WebUtil;
 import org.ibase4j.model.sys.SysEvent;
 import org.ibase4j.provider.sys.ISysEventProvider;
-import org.springframework.stereotype.Service;
-
-import com.alibaba.fastjson.JSON;
 
 @Service
 public class SysEventServiceImpl extends BaseService<ISysEventProvider, SysEvent> implements SysEventService {
+    private ExecutorService executorService = Executors.newCachedThreadPool();
+
     @DubboReference
     public void setProvider(ISysEventProvider provider) {
         this.provider = provider;
     }
 
-    private ExecutorService executorService = Executors.newCachedThreadPool();
-
     public void saveEvent(final HttpServletRequest request, final HttpServletResponse response, final Exception ex,
-        final Long startTime, final Long endTime) {
+                          final Long startTime, final Long endTime) {
         String path = request.getServletPath();
         if (!path.contains("/read/") && !path.contains("/upload/imageData")) {
             final SysEvent record = new SysEvent();
@@ -44,14 +44,15 @@ public class SysEventServiceImpl extends BaseService<ISysEventProvider, SysEvent
             record.setStatus(response.getStatus());
             record.setCreateBy(uid);
             record.setUpdateBy(uid);
-            final String msg = (String)request.getAttribute("msg");
+            final String msg = (String) request.getAttribute("msg");
 
             executorService.submit(new Runnable() {
                 public void run() {
                     try { // 保存操作
                         if (StringUtils.isNotBlank(msg)) {
                             record.setRemark(msg);
-                        } else {
+                        }
+                        else {
                             record.setRemark(ExceptionUtil.getStackTraceAsString(ex));
                         }
                         Map<String, Object> params = InstanceUtil.newHashMap();
@@ -67,10 +68,11 @@ public class SysEventServiceImpl extends BaseService<ISysEventProvider, SysEvent
                             // long free = Runtime.getRuntime().freeMemory() / 1024 / 1024;
                             // , max, total, free, max - total + free
                             logger.debug(message, DateUtil.format(startTime, "HH:mm:ss.SSS"),
-                                DateUtil.format(endTime, "HH:mm:ss.SSS"), (endTime - startTime) / 1000.00,
-                                record.getRequestUri());
+                                    DateUtil.format(endTime, "HH:mm:ss.SSS"), (endTime - startTime) / 1000.00,
+                                    record.getRequestUri());
                         }
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                         logger.error("Save event log cause error :", e);
                     }
                 }

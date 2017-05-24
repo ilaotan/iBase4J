@@ -2,13 +2,12 @@ package org.ibase4j.provider.sys;
 
 import java.util.Map;
 
-import org.ibase4j.core.base.BaseProviderImpl;
-import org.ibase4j.core.support.dubbo.spring.annotation.DubboService;
-import org.ibase4j.model.sys.SysDept;
-import org.ibase4j.provider.sys.ISysDeptProvider;
 import org.springframework.cache.annotation.CacheConfig;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import org.ibase4j.core.base.BaseProviderImpl;
+import org.ibase4j.core.support.dubbo.spring.annotation.DubboService;
+import org.ibase4j.model.sys.SysDept;
 
 /**
  * @author ShenHuaJie
